@@ -162,6 +162,7 @@ rpg.h {
     *CORES
 
 7. Sobre mim
+ 
     sou um estudante do IFBA, me chamo ########, bom, não posso dizer,
     digamos que meu nome em jogos seja Rapozitav2 (minecraft etc)
 
