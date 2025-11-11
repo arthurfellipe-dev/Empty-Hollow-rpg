@@ -132,22 +132,36 @@ rpg.h {
     se esse tópico estiver vazio, implantei tudo que queria, caso não, ficaria feliz em ter seu apoio!!
 
     *salvar progresso(estou estudando ainda)
+   
     *dimenções diferentes
+   
     *inimigos mais inteligentes com habilidades diferentes (não só bonecos que causam dano)
+   
     *mais classes
+   
     *arte ancii
+   
     *habilidades (além das armas)
+   
     *mais inimigos
+   
     *itens dropaveis
+   
     *boss secreto
+   
     *titulos
+   
     *coisas como veneno, congelar etc
+   
     *combos de ataque
+   
     *sistema de missões
+   
     *printfs de forma que seja letra por letra (usleep)
+   
     *CORES
 
-6. Sobre mim
+7. Sobre mim
     sou um estudante do IFBA, me chamo ########, bom, não posso dizer,
     digamos que meu nome em jogos seja Rapozitav2 (minecraft etc)
 
