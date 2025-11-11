@@ -1,4 +1,14 @@
 # rpg-em-C---projeto-de-aprendizado
+
+0. Compilação
+
+   ## Compilação manual
+gcc src/*.c -I include -o rpg
+./rpg
+
+## Compilação via Makefile
+make run
+
 1. Introdução
 
 
