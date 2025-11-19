@@ -6,7 +6,7 @@
 void playerClasse(struct jogador *player){
     int escolhaClasse;
     printf("\n\n\n\n      Bem vindo jogador, qual seu nome? \n\n");
-    scanf("%s", player->nome);
+    fgets(player->nome, sizeof(player->nome), stdin);
 
     limpar_buffer();
 
