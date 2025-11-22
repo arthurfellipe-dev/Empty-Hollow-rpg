@@ -1,7 +1,7 @@
 #include "itens.h"
 #include "rpg.h"
-#include "player.h"
 #include "world.h"
+
 void habilidade(struct jogador *player) {
     int escolhaHab;
 
@@ -37,6 +37,8 @@ void habilidade(struct jogador *player) {
                 } else {
                     player->bonus_dano += 30;
                     player->energia -= 20;
+                    printf("Habilidade usada\n");
+                    sleep(1);
                 }
             } else if (player->inventario.arma_equipada.raridade  == LENDARIA) {
                 if (player->energia < 30) {
@@ -44,6 +46,8 @@ void habilidade(struct jogador *player) {
                 } else {
                     player->bonus_dano += 40;
                     player->energia -= 30;
+                    printf("Habilidade usada\n");
+                    sleep(1);
                 }
             }
         break;
@@ -61,6 +65,8 @@ void habilidade(struct jogador *player) {
                 } else {
                     player->bonus_dano += 40;
                     player->energia -= 20;
+                    printf("Especial usado!\n");
+                    sleep(1);
                 }
 
             } else if (player->inventario.arma_equipada.raridade  == EPICA) {
@@ -69,6 +75,8 @@ void habilidade(struct jogador *player) {
                 } else {
                     player->bonus_dano += 60;
                     player->energia -= 40;
+                    printf("Especial usado!\n");
+                    sleep(1);
                 }
             } else if (player->inventario.arma_equipada.raridade  == LENDARIA) {
                 if (player->energia < 60) {
@@ -76,12 +84,15 @@ void habilidade(struct jogador *player) {
                 } else {
                     player->bonus_dano += 80;
                     player->energia -= 60;
+                    printf("Especial usado!\n");
+                    sleep(1);
                 }
             }
-        break;
-
-        case 3:
-
             break;
+        case 3:
+            printf("ataque comum usado\n");
+            break;
+        default:
+            printf("invalido");
     }
 }
