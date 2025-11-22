@@ -70,6 +70,8 @@ void introducaoCombate(){
         printf("\n\t  Um grito rasga o silêncio ao seu redor.\n");
         printf("\n\t  Você encara o perigo de frente!\n");
         break;
+    default:
+        break;
     }
 }
 
@@ -94,8 +96,9 @@ void introducaoLoja() {
         printf("\t  Enquanto explorava uma trilha esquecida, você tropeça em uma clareira escondida.\n");
         printf("\t  No centro, uma loja encantada com mercadorias que parecem desafiar o tempo.\n");
         break;
+    default:
+        break;
     }
-    printf("\n");
 }
 
 void verCreditos(){
@@ -109,6 +112,7 @@ void verCreditos(){
 
 void loja(struct jogador *player) {
     introducaoLoja();
+    sleep(1);
     int escolhaLoja;
 
     printf(" Suas moedas de ouro: %d\n\n", player->ouro);
@@ -171,7 +175,7 @@ void loja(struct jogador *player) {
 
         if (player->ouro >= 60 ) {
             player->inventario.arma_equipada.raridade  = COMUM;
-            player->inventario.arma_equipada.nome = "Vontade do Monarca";
+            strcpy(player->inventario.arma_equipada.nome, "Vontade do Monarca");
             player->inventario.arma_equipada.dano_base = 20;
             player->ouro -= 60;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
@@ -189,8 +193,8 @@ void loja(struct jogador *player) {
         }
 
         if (player->ouro >= 100 ) {
-            player->inventario.arma_equipada.raridade  = EPICA;
-            player->inventario.arma_equipada.nome = "Quebradora de Eras";
+            player->inventario.arma_equipada.raridade = EPICA;
+            strcpy(player->inventario.arma_equipada.nome, "Quebradora de Eras");
             player->inventario.arma_equipada.dano_base = 30;
             player->ouro -= 100;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
@@ -209,7 +213,7 @@ void loja(struct jogador *player) {
 
         if (player->ouro >= 150 ) {
             player->inventario.arma_equipada.raridade  = LENDARIA;
-            player->inventario.arma_equipada.nome = "Fragmento Ancestral";
+            strcpy(player->inventario.arma_equipada.nome, "Fragmento Ancestral");
             player->inventario.arma_equipada.dano_base = 45;
             player->ouro -= 150;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
@@ -229,7 +233,7 @@ void loja(struct jogador *player) {
 
         if (player->ouro >= 60 ) {
             player->inventario.arma_equipada.raridade  = COMUM;
-            player->inventario.arma_equipada.nome = "Galho da Dimensao Esquecida";
+            strcpy(player->inventario.arma_equipada.nome, "Galho da Dimensao Esquecida");
             player->inventario.arma_equipada.dano_base = 20;
             player->ouro -= 60;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
@@ -248,7 +252,7 @@ void loja(struct jogador *player) {
 
         if (player->ouro >= 100 ) {
             player->inventario.arma_equipada.raridade  = EPICA;
-            player->inventario.arma_equipada.nome = "indice do Vazio";
+            strcpy(player->inventario.arma_equipada.nome, "indice do Vazio");
             player->inventario.arma_equipada.dano_base = 30;
             player->ouro -= 100;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
@@ -267,7 +271,7 @@ void loja(struct jogador *player) {
 
         if (player->ouro >= 150 ) {
             player->inventario.arma_equipada.raridade  = LENDARIA;
-            player->inventario.arma_equipada.nome = "Diario do Ultimo Monarca";
+            strcpy(player->inventario.arma_equipada.nome, "Diario do Ultimo Monarca");
             player->inventario.arma_equipada.dano_base = 45;
             player->ouro -= 150;
             printf("você comprou %s", player->inventario.arma_equipada.nome);
