@@ -13,7 +13,7 @@ enum  dificuldadeInimigo{FRAGMENTO, ESPECTRO, ECO, ARAUTO, BOSS};
 enum RaridadeArma {SEM_ARMA,COMUM,EPICA,LENDARIA};
 
 struct arma {
-    const char *nome;
+    char nome[50];
     enum RaridadeArma raridade;
     int dano_base;
 };
@@ -25,10 +25,9 @@ struct inventario {
 };
 struct jogador{
     char nome[30];
-    int ouro, xp, nivel;
-    int vida, energia;
-    float dano;
-    int bonus_dano;
+    int ouro, xp, nivel, dano;
+    float vida, energia;
+    int bonus_dano, max_vida, max_energia;
     struct inventario inventario;
 
     int classe;
