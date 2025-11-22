@@ -20,24 +20,14 @@ int turno(struct jogador *player, struct inimigo *enemy, int boss) {
 
         enemy->vida -= player->dano;
 
+        player->bonus_dano = 0;
+
         if(enemy->vida <= 0) {
             enemy->vida = 0;
             printf("\n\t  Parábens!! Você derrotou o inimigo\n");
             sleep(2);
 
-            int geração_ouro = rand() % 10 + 15;
-            int geração_xp = rand() % 25 + 20;
-            player->ouro += geração_ouro;
-            player->xp += geração_xp;
-            printf("\t  Você ganhou %d moedas de ouro e %d de XP!\n", geração_ouro, geração_xp);
-
-            if (player->xp >= player->nivel * 60) {
-                player->nivel++;
-                player->xp = 0;
-                player->vida += 20;
-                player->energia += 20;
-                imprimirLevelUp(player);
-            }
+            subirLevel(player);
 
             if (enemy->tipo == BOSS) {
                 morteBoss();
@@ -47,7 +37,7 @@ int turno(struct jogador *player, struct inimigo *enemy, int boss) {
         }
         else {
 
-            printf("\n\n\t  %s, causou %.2f de dano no inimigo", player->nome, player->dano);
+            printf("\n\n\t  %s, causou %d de dano no inimigo", player->nome, player->dano);
             if (enemy->tipo != BOSS)
                 printf("\n\t  Vida do inimigo: %d\n", enemy->vida);
             enemy->dano = danoMonstro(enemy);
@@ -89,13 +79,10 @@ int turno(struct jogador *player, struct inimigo *enemy, int boss) {
         printf("\n\t  você fugiu");
         sleep(1);
         return 0;
-        break;
     default:
         printf("invalido");
         break;
     }
-
-
     return 1;
 }
 
@@ -162,10 +149,28 @@ void iniciarCombate(struct jogador *player) {
     int isBoss = 0;
 
     introducaoCombate();
+    sleep(1);
 
     isBoss = gerarMonstro(player, &enemy);
 
     while (statusLuta == 1) {
         statusLuta = turno(player, &enemy, isBoss);
+    }
+}
+void subirLevel(struct jogador *player) {
+    int geração_ouro = rand() % 10 + 15;
+    int geração_xp = rand() % 25 + 20;
+    player->ouro += geração_ouro;
+    player->xp += geração_xp;
+    printf("\t  Você ganhou %d moedas de ouro e %d de XP!\n", geração_ouro, geração_xp);
+
+    if (player->xp >= player->nivel * 60) {
+        player->nivel++;
+        player->xp = 0;
+        player->max_vida += 20;
+        player->vida = player->max_vida;
+        player->max_energia += 10;
+        player->energia = player->max_energia;
+        imprimirLevelUp(player);
     }
 }
