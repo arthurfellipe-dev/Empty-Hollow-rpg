@@ -1,27 +1,28 @@
 #include "rpg.h"
 #include "player.h"
-
 #include "world.h"
 
-void playerClasse(struct jogador *player){
+void playerClasse(struct jogador *player) {
     int escolhaClasse;
     printf("\n\n\n\n      Bem vindo jogador, qual seu nome? \n\n");
     fgets(player->nome, sizeof(player->nome), stdin);
 
-    limpar_buffer();
+    player->nome[strcspn(player->nome, "\n")] = '\0';
 
     player->ouro = 0;
     player->xp = 0;
     player->vida = 500;
-    player->energia = 150;
+    player->energia = 250;
     player->dano = 0;
     player->nivel = 1;
     player->inventario.pocao_vida = 0;
     player->inventario.pocao_energia = 0;
     player->bonus_dano = 0;
-    player->inventario.arma_equipada.nome = "maos nuas";
+    strcpy(player->inventario.arma_equipada.nome, "maos nuas");
     player->inventario.arma_equipada.raridade = SEM_ARMA;
     player->inventario.arma_equipada.dano_base = 10;
+    player->max_vida = player->vida;
+    player->max_energia = player->energia;
 
     if (strcmp(player->nome, "CHAOS")== 0){
         printf("\nVOCÊ EVOLUIU PARA CLASSE SECRETA: Monarca do Vazio\n\n");
@@ -40,13 +41,13 @@ void playerClasse(struct jogador *player){
         case MAGO:
             player->classe = MAGO;
             player->vida -= 20;
-            player->energia += 50;
+            player->energia *= 1.2;
             printf("\n %s, o(a) poderoso(a) Mago(a)!!\n", player->nome);
             break;
         case ESPADACHIM:
             player->classe = ESPADACHIM;
-            player->vida += 50;
-            player->energia -= 20;
+            player->vida *= 1.2;
+            player->energia -= 50;
             printf("\n %s, o(a) poderoso(a) Espadachin!!\n", player->nome);
             break;
         default:
@@ -59,12 +60,13 @@ void playerClasse(struct jogador *player){
 void verStatus(struct jogador *player) {
     printf("\n      STATUS\n\n");
     printf("Nome: %s\n", player->nome);
-    printf("Vida: %d\n", player->vida);
-    printf("Energia: %d\n", player->energia);
+    printf("Vida: %d/%d\n", player->vida, player->max_vida);
+    printf("Energia: %d/%d\n", player->energia, player->max_energia);
     printf("Moedas de ouro: %d\n", player->ouro);
     printf("Nivel: %d\n", player->nivel);
     printf("Poções de vida: %d\n", player->inventario.pocao_vida);
     printf("Poções de energia: %d\n", player->inventario.pocao_energia);
+    printf("Arma: %s\n", player->inventario.arma_equipada.nome);
 }
 
 void imprimirLevelUp(struct jogador *player) {
