@@ -1,9 +1,11 @@
-
 CC = gcc
 
 SRC = src
 INC = include
-OBJ = $(SRC)/main.o $(SRC)/player.o $(SRC)/combate.o $(SRC)/world.o $(SRC)/itens.o
+
+SOURCES = $(wildcard $(SRC)/*.c)
+
+OBJ = $(SOURCES:.c=.o)
 
 OUT = rpg
 
@@ -12,7 +14,7 @@ CFLAGS = -I$(INC)
 $(OUT): $(OBJ)
 	$(CC) $(OBJ) -o $(OUT)
 
-$(SRC)/%.o: $(SRC)/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(OUT)
