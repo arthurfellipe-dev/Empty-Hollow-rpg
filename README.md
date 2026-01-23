@@ -148,9 +148,7 @@ rpg.h {
 6. Possíveis Expansões Futuras
 
 
-    se esse tópico estiver vazio, implantei tudo que queria, caso não, ficaria feliz em ter seu apoio!!
-
-    *salvar progresso(estou estudando ainda)
+    se esse tópico estiver vazio, implantei tudo que queria, caso não, ficaria feliz em ter seu apoio!
    
     *dimenções diferentes
    
